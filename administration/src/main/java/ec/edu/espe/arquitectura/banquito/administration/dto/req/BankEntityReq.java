@@ -1,4 +1,4 @@
-package ec.edu.espe.arquitectura.banquito.administration.controller.dto.req;
+package ec.edu.espe.arquitectura.banquito.administration.dto.req;
 
 
 import lombok.Builder;

@@ -1,18 +1,17 @@
-package ec.edu.espe.arquitectura.banquito.administration.controller.dto.req;
+package ec.edu.espe.arquitectura.banquito.administration.dto.res;
 
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.math.BigDecimal;
-import java.util.Date;
+
 @Data
 @Builder
-public class BranchReq {
+public class BranchRes {
     private String code;
     private String name;
+    private String emailAddress;
     private String state;
-    private String emailAdress;
     private String phoneNumber;
     private String line1;
     private String line2;
