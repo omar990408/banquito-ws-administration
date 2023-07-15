@@ -1,35 +1,35 @@
 package ec.edu.espe.arquitectura.banquito.administration.service;
 
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.GeoCountryReq;
-import ec.edu.espe.arquitectura.banquito.administration.dto.res.BaseRes;
-import ec.edu.espe.arquitectura.banquito.administration.exception.InsertException;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoCountry;
 import ec.edu.espe.arquitectura.banquito.administration.repository.GeoCountryRepository;
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.GeoCountryMapper;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import static ec.edu.espe.arquitectura.banquito.administration.constant.MessageConstant.ERROR_REGISTRY;
-import static ec.edu.espe.arquitectura.banquito.administration.constant.MessageConstant.SUCCESS_REGISTRY;
+import java.util.Optional;
+
 
 @Service
-@RequiredArgsConstructor
-@Slf4j
 public class GeoCountryService {
     
     private final GeoCountryRepository geoCountryRepository;
     private final GeoCountryMapper geoCountryMapper;
-    
-    public BaseRes createCountry(GeoCountryReq geoCountryReq) throws InsertException {
-        try{
-            GeoCountry geoCountry = geoCountryMapper.toGeoCountry(geoCountryReq);
-            geoCountryRepository.save(geoCountry);
-            return BaseRes.builder().message(SUCCESS_REGISTRY).build();
-        }catch (Exception e){
-            throw new InsertException(ERROR_REGISTRY);
-        }
+
+    public GeoCountryService(GeoCountryRepository geoCountryRepository, GeoCountryMapper geoCountryMapper) {
+        this.geoCountryRepository = geoCountryRepository;
+        this.geoCountryMapper = geoCountryMapper;
     }
 
+    @Transactional
+    public GeoCountry create(GeoCountryReq geoCountryReq){
+        Optional<GeoCountry> geoCountryTmp = this.geoCountryRepository.findByCountryCode(geoCountryReq.getCountryCode());
+        if(geoCountryTmp.isPresent()){
+            throw new RuntimeException("Ya existe un pais con el codigo: "+geoCountryReq.getCountryCode());
+        }else{
+            GeoCountry geoCountry = geoCountryMapper.toGeoCountry(geoCountryReq);
+            return this.geoCountryRepository.save(geoCountry);
+        }
+    }
 
 }

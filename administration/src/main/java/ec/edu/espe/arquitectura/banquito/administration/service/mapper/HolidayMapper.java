@@ -2,12 +2,9 @@ package ec.edu.espe.arquitectura.banquito.administration.service.mapper;
 
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.HolidayReq;
 import ec.edu.espe.arquitectura.banquito.administration.model.Holiday;
-import org.mapstruct.BeanMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.*;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface HolidayMapper {
     Holiday toHoliday(HolidayReq holidayReq);
 
