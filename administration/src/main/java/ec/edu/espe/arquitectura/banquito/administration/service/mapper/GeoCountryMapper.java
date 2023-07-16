@@ -12,4 +12,6 @@ public interface GeoCountryMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updatePais(GeoCountryReq geoCountryReq, @MappingTarget GeoCountry geoCountry);
 
+    GeoCountryReq toGeoCountryReq(GeoCountry geoCountry);
+
 }

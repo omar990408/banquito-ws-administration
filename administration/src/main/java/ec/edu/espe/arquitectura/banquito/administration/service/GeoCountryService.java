@@ -32,4 +32,31 @@ public class GeoCountryService {
         }
     }
 
+    @Transactional
+    public GeoCountry update (String id,GeoCountryReq geoCountryReq){
+        GeoCountry geoCountry = getCountryByCode(id);
+        this.geoCountryMapper.updatePais(geoCountryReq, geoCountry);
+        return this.geoCountryRepository.save(geoCountry);
+    }
+
+    @Transactional
+    public void delete(String id){
+        GeoCountry geoCountry = getCountryByCode(id);
+        this.geoCountryRepository.delete(geoCountry);
+    }
+
+    public GeoCountryReq findByCountryCode(String countryCode){
+        GeoCountry geoCountry = getCountryByCode(countryCode);
+        return this.geoCountryMapper.toGeoCountryReq(geoCountry);
+    }
+
+    private GeoCountry getCountryByCode(String countryCode){
+        Optional<GeoCountry> geoCountry = geoCountryRepository.findByCountryCode(countryCode);
+        if (geoCountry.isPresent()) {
+            return geoCountry.get();
+        }else {
+            throw new RuntimeException("El pais con código: "+countryCode+" no existe");
+        }
+    }
+
 }
