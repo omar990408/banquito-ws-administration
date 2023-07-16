@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public class BranchReq {
     private String code;
     private String bankEntityId;
+    private String locationId;
     private String name;
     private String state;
     private String emailAddress;

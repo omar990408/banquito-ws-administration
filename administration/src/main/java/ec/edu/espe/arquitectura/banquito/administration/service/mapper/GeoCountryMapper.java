@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.banquito.administration.service.mapper;
 
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.GeoCountryReq;
+import ec.edu.espe.arquitectura.banquito.administration.dto.res.GeoCountryRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoCountry;
 import org.mapstruct.*;
 
@@ -12,6 +13,6 @@ public interface GeoCountryMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updatePais(GeoCountryReq geoCountryReq, @MappingTarget GeoCountry geoCountry);
 
-    GeoCountryReq toGeoCountryReq(GeoCountry geoCountry);
+    GeoCountryRes toGeoCountryRes(GeoCountry geoCountry);
 
 }

@@ -22,6 +22,7 @@ public class GeoLocation {
     private String name;
     private String areaPhoneCode;
     private String zipCode;
+    private List<Holiday> holidays;
     @Version
     private Long version;
 }

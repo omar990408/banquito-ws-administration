@@ -3,8 +3,7 @@ package ec.edu.espe.arquitectura.banquito.administration.service.mapper;
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.GeoLocationReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.res.GeoLocationRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoLocation;
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -14,4 +13,7 @@ public interface GeoLocationMapper {
 
     GeoLocationRes toGeoLocationRes(GeoLocation geoLocation);
     List<GeoLocationRes> toGeoLocationResList(List<GeoLocation> geoLocations);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateGeoLocation(GeoLocationReq geoLocationReq, @MappingTarget GeoLocation geoLocation);
 }

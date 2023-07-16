@@ -8,13 +8,11 @@ import java.util.List;
 
 @Data
 @Builder
-public class GeoLocationRes {
-    private String id;
+public class GeoCountryRes {
     private String countryCode;
-    private String levelParentName;
-    private String levelName;
     private String name;
-    private String areaPhoneCode;
-    private String zipCode;
+    private String phoneCode;
+    private List<GeoStructureRes> geoStructures;
     private List<HolidayDto> holidays;
+
 }

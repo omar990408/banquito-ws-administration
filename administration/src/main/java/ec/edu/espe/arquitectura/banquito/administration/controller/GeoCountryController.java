@@ -1,10 +1,14 @@
 package ec.edu.espe.arquitectura.banquito.administration.controller;
 
+import ec.edu.espe.arquitectura.banquito.administration.dto.HolidayDto;
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.GeoCountryReq;
+import ec.edu.espe.arquitectura.banquito.administration.dto.res.GeoCountryRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoCountry;
+import ec.edu.espe.arquitectura.banquito.administration.model.Holiday;
 import ec.edu.espe.arquitectura.banquito.administration.service.GeoCountryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("api/v1/geoCountry")
@@ -38,6 +42,37 @@ public class GeoCountryController {
     @DeleteMapping("/delete/{code}")
     public void delete(@PathVariable String code){
         this.geoCountryService.delete(code);
+    }
+
+    @PutMapping("/addHoliday/{code}")
+    public ResponseEntity<Holiday> addHoliday(@PathVariable String code, @RequestBody HolidayDto holidayDto){
+        try{
+            GeoCountry geoCountry = this.geoCountryService.addHoliday(code, holidayDto);
+            return ResponseEntity.ok().body(geoCountry.getHolidays().get(geoCountry.getHolidays().size()-1));
+        }catch (RuntimeException rte){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping("/holiday/generate-weekends/{code}")
+    public ResponseEntity<GeoCountry> generateHolidays(
+            @PathVariable String code,
+            @RequestParam Integer year,
+            @RequestParam Integer month,
+            @RequestParam(defaultValue = "false") Boolean saturday,
+            @RequestParam(defaultValue = "false") Boolean sunday){
+        return ResponseEntity.ok().body(this.geoCountryService.generateHolidaysWeekends(code, year, month, saturday, sunday));
+    }
+
+
+    @GetMapping("/findByCountryCode/{code}")
+    public ResponseEntity<GeoCountryRes> findByCountryCode(@PathVariable String code){
+        try{
+            GeoCountryRes geoCountryRes = this.geoCountryService.findByCountryCode(code);
+            return ResponseEntity.ok().body(geoCountryRes);
+        }catch (RuntimeException rte){
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 }
