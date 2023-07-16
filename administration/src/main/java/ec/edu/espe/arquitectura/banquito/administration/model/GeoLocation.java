@@ -15,7 +15,13 @@ public class GeoLocation {
     @Id
     private String id;
     private String countryCode;
-    private List<GeoStructure> geoStructures;
+    private String levelCode;
+    private String levelName;
+    private String levelParentId;
+    private String levelParentName;
+    private String name;
+    private String areaPhoneCode;
+    private String zipCode;
     @Version
     private Long version;
 }

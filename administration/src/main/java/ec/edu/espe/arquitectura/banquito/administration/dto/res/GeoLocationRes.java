@@ -10,5 +10,9 @@ import java.util.List;
 @Builder
 public class GeoLocationRes {
     private String countryCode;
-    private List<GeoStructureRes> geoStructures;
+    private String levelName;
+    private String levelParentName;
+    private String name;
+    private String areaPhoneCode;
+    private String zipCode;
 }

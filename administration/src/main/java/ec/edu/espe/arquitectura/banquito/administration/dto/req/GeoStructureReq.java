@@ -8,6 +8,4 @@ import lombok.Data;
 public class GeoStructureReq {
     private Integer levelCode;
     private String name;
-    private String areaPhoneCode;
-    private String zipCode;
 }

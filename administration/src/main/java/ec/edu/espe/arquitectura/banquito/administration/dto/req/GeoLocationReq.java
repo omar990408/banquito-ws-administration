@@ -10,5 +10,11 @@ import java.util.List;
 @Builder
 public class GeoLocationReq {
     private String countryCode;
-    private List<GeoStructureReq> geoStructures;
+    private String levelCode;
+    private String levelName;
+    private String levelParentId;
+    private String levelParentName;
+    private String name;
+    private String areaPhoneCode;
+    private String zipCode;
 }

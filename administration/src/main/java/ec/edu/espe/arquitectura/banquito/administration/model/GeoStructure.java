@@ -9,8 +9,6 @@ import org.springframework.data.annotation.Version;
 public class GeoStructure {
     private Integer levelCode;
     private String name;
-    private String areaPhoneCode;
-    private String zipCode;
     @Version
     private long version;
 }

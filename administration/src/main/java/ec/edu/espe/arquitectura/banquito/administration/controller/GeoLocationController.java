@@ -30,12 +30,14 @@ public class GeoLocationController {
 
 
     @GetMapping("/findByCountryCodeAndName")
-    public ResponseEntity<List<GeoLocationRes>> findByCountryCodeAndName(@RequestParam String name, @RequestParam String countryCode){
-        try{
-            List<GeoLocationRes> geoLocationRes = this.geoLocationService.findByCountryCodeAndName(name, countryCode);
-            return ResponseEntity.ok().body(geoLocationRes);
-        }catch (RuntimeException rte){
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<GeoLocationRes> findByCountryCodeAndName(@RequestParam String countryCode, @RequestParam String name){
+        GeoLocationRes geoLocationRes = this.geoLocationService.findByCountryCodeAndName(countryCode, name);
+        return ResponseEntity.ok().body(geoLocationRes);
+    }
+
+    @GetMapping("/CountryCodeAndParentName")
+    public ResponseEntity<List<GeoLocationRes>> findByCountryCodeAndParentName(@RequestParam String countryCode, @RequestParam String parentName){
+        List<GeoLocationRes> geoLocationRes = this.geoLocationService.findByCountryCodeAndLevelParentName(countryCode, parentName);
+        return ResponseEntity.ok().body(geoLocationRes);
     }
 }

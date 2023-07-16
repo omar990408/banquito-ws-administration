@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -23,13 +24,28 @@ public class GeoLocationService {
 
     @Transactional
     public GeoLocation create (GeoLocationReq geoLocationReq) {
-        GeoLocation geoLocation = geoLocationMapper.toGeoLocation(geoLocationReq);
-        return this.geoLocationRepository.save(geoLocation);
+        Optional<GeoLocation> geoLocationTmp = this.geoLocationRepository.
+                findByCountryCodeAndName(geoLocationReq.getCountryCode(), geoLocationReq.getName());
+        if (geoLocationTmp.isPresent()){
+            throw new RuntimeException("Ya existe un registro con el mismo nombre");
+        }else {
+            GeoLocation geoLocation = geoLocationMapper.toGeoLocation(geoLocationReq);
+            return this.geoLocationRepository.save(geoLocation);
+        }
+
     }
 
-    public List<GeoLocationRes> findByCountryCodeAndName(String name, String countryCode){
-        List<GeoLocation> geoLocations = this.geoLocationRepository.findByGeoStructureCountryCode(name, countryCode);
-        return this.geoLocationMapper.toGeoLocationResList(geoLocations);
+    public GeoLocationRes findByCountryCodeAndName(String countryCode,String name){
+        Optional<GeoLocation> geoLocation = this.geoLocationRepository.findByCountryCodeAndName(countryCode, name);
+        if (geoLocation.isEmpty()){
+            throw new RuntimeException("No se encontro resultados");
+        }
+        return this.geoLocationMapper.toGeoLocationRes(geoLocation.get());
+    }
+
+    public List<GeoLocationRes> findByCountryCodeAndLevelParentName(String countryCode, String levelParentName){
+        List<GeoLocation> geoLocation = this.geoLocationRepository.findByCountryCodeAndLevelParentName(countryCode, levelParentName);
+        return this.geoLocationMapper.toGeoLocationResList(geoLocation);
     }
 
 
