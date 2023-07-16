@@ -21,8 +21,5 @@ public class GeoCountry {
     private String phoneCode;
     @Version
     private Long version;
-
     private List<GeoStructure> geoStructures;
-    private List<Holiday> holidays;
-
 }
