@@ -12,8 +12,6 @@ public class GeoCountryReq {
     private String countryCode;
     private String name;
     private String phoneCode;
-
     private List<GeoStructureReq> geoStructures;
-    private List<HolidayReq> holidays;
-
+    
 }

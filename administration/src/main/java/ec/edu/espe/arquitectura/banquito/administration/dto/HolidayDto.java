@@ -1,4 +1,4 @@
-package ec.edu.espe.arquitectura.banquito.administration.dto.req;
+package ec.edu.espe.arquitectura.banquito.administration.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 @Builder
-public class HolidayReq {
+public class HolidayDto {
     private Date holidayDate;
     private String name;
     private String type;
