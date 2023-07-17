@@ -72,6 +72,33 @@ public class GeoCountryService {
         return this.geoCountryRepository.save(geoCountry);
     }
 
+    @Transactional
+    public GeoCountry updateHoliday(String code, Date date,HolidayDto holidayDto){
+        GeoCountry geoCountry = getCountryByCode(code);
+        if(geoCountry.getHolidays() == null){
+            geoCountry.setHolidays(new ArrayList<>());
+        }
+        List<Holiday> holidaysList= geoCountry.getHolidays();
+        boolean existHoliday = false;
+        if (!holidaysList.isEmpty()) {
+            for (Holiday holidayTmp : holidaysList) {
+                if (holidayTmp.getHolidayDate().equals(date)) {
+                    this.holidayMapper.updateHoliday(holidayDto, holidayTmp);
+                    existHoliday = true;
+                    break;
+                }
+            }
+            if (!existHoliday) {
+                throw new RuntimeException("No existe un feriado con la fecha: " + date + " para el pais: " + geoCountry.getName());
+            }else {
+                geoCountry.setHolidays(holidaysList);
+                return this.geoCountryRepository.save(geoCountry);
+            }
+        }else{
+            throw new RuntimeException("No existe un feriado con la fecha: " + date + " para el pais: " + geoCountry.getName());
+        }
+    }
+
     public GeoCountry generateHolidaysWeekends(
             String code,
             int year,
