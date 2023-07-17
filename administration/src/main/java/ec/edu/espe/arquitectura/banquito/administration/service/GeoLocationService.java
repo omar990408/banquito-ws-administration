@@ -13,10 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
@@ -71,6 +68,33 @@ public class GeoLocationService {
         }
         geoLocation.getHolidays().add(holiday);
         return this.geoLocationRepository.save(geoLocation);
+    }
+
+    @Transactional
+    public GeoLocation updateHoliday(String id, Date date, HolidayDto holidayDto){
+        GeoLocation geoLocation = this.geoLocationRepository.findById(id).orElseThrow(() -> new RuntimeException("No existe la locación"));
+        if(geoLocation.getHolidays() == null){
+            geoLocation.setHolidays(new ArrayList<>());
+        }
+        List<Holiday> holidaysList= geoLocation.getHolidays();
+        boolean existHoliday = false;
+        if (!holidaysList.isEmpty()) {
+            for (Holiday holidayTmp : holidaysList) {
+                if (holidayTmp.getHolidayDate().equals(date)) {
+                    this.holidayMapper.updateHoliday(holidayDto, holidayTmp);
+                    existHoliday = true;
+                    break;
+                }
+            }
+            if (!existHoliday) {
+                throw new RuntimeException("No existe un feriado con la fecha: " + date + " para la locación: " + geoLocation.getName());
+            }else {
+                geoLocation.setHolidays(holidaysList);
+                return this.geoLocationRepository.save(geoLocation);
+            }
+        }else{
+            throw new RuntimeException("No existe un feriado con la fecha: " + date + " para la locación " + geoLocation.getName());
+        }
     }
 
     public GeoLocation generateHolidaysWeekends(

@@ -6,9 +6,11 @@ import ec.edu.espe.arquitectura.banquito.administration.dto.res.GeoLocationRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoLocation;
 import ec.edu.espe.arquitectura.banquito.administration.model.Holiday;
 import ec.edu.espe.arquitectura.banquito.administration.service.GeoLocationService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -62,6 +64,20 @@ public class GeoLocationController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PutMapping("/updateHoliday/{id}")
+    public ResponseEntity<GeoLocation> updateHoliday(
+            @PathVariable String id,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
+            @RequestBody HolidayDto holidayDto){
+        try{
+            GeoLocation geoLocation = this.geoLocationService.updateHoliday(id,date, holidayDto);
+            return ResponseEntity.ok().body(geoLocation);
+        }catch (RuntimeException rte){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 
     @PutMapping("/holiday/generate-weekends/{id}")
     public ResponseEntity<GeoLocation> generateHolidays(
