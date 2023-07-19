@@ -11,9 +11,9 @@ import ec.edu.espe.arquitectura.banquito.administration.repository.HolidayReposi
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.HolidayMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 public class HolidayService {
@@ -53,8 +53,11 @@ public class HolidayService {
         }else{
             List<HolidayRes> holidays  = this.holidayMapper.toHolidayResList(holidayTmp);
             for (HolidayRes holiday : holidays) {
+                if(holiday.getGeoLocationId() != null){
+                    holiday.setGeoLocationName(getLocationName(holiday.getGeoLocationId()));
+                }
                 holiday.setCountryName(getCountryName(countryCode));
-                holiday.setGeoLocationName(getLocationName(holiday.getGeoLocationId()));
+
             }
             return holidays;
         }
@@ -63,11 +66,13 @@ public class HolidayService {
     public List<HolidayRes> findByLocationId(String id){
         List<Holiday> holidayTmp = this.holidayRepository.findByGeoLocationId(id);
         if(holidayTmp.isEmpty()){
-            throw new RuntimeException("No existe el código del pais");
+            throw new RuntimeException("No existe la locación");
         }else{
             List<HolidayRes> holidays  = this.holidayMapper.toHolidayResList(holidayTmp);
             for (HolidayRes holiday : holidays) {
-                holiday.setCountryName(getCountryName(holiday.getCountryCode()));
+                if(holiday.getCountryCode() != null){
+                    holiday.setCountryName(getCountryName(holiday.getCountryCode()));
+                }
                 holiday.setGeoLocationName(getLocationName(id));
             }
             return holidays;
@@ -88,5 +93,72 @@ public class HolidayService {
             throw new RuntimeException("No existe la locación");
         }
         return countryTmp.get().getName();
+    }
+
+    public List<Holiday> generateHolidaysWeekendsCountries(
+            int year,
+            int month,
+            boolean saturday,
+            boolean sunday,
+            String countryCode) {
+        Calendar calendar = Calendar.getInstance();
+        GeoCountry countryTmp = getCountryByCode(countryCode);
+        List<Holiday> holidayWeekend = new ArrayList<>();
+        LocalDate startDate = LocalDate.of(year, month, 1);
+        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
+        while (startDate.isBefore(endDate) || startDate.isEqual(endDate)) {
+            if (saturday && startDate.getDayOfWeek() == DayOfWeek.SATURDAY) {
+                calendar.set(startDate.getYear(), startDate.getMonthValue() - 1, startDate.getDayOfMonth());
+                calendar.set(Calendar.HOUR_OF_DAY, 0);
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
+                Holiday holiday = Holiday.builder()
+                        .holidayDate(calendar.getTime())
+                        .uuid(UUID.randomUUID().toString())
+                        .type("NAT")
+                        .name("SATURDAY WEEKEND")
+                        .countryCode(countryTmp.getCountryCode())
+                        .build();
+                if (this.findHolidayByHolidayUnique(holiday)) {
+                    holidayWeekend.add(holiday);
+                }
+            }
+            if (sunday && startDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                calendar.set(startDate.getYear(), startDate.getMonthValue() - 1, startDate.getDayOfMonth());
+                calendar.set(Calendar.HOUR_OF_DAY, 0);
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
+                Holiday holiday = Holiday.builder().
+                        holidayDate(calendar.getTime())
+                        .type("NAT")
+                        .uuid(UUID.randomUUID().toString())
+                        .name("SUNDAY WEEKEND")
+                        .countryCode(countryTmp.getCountryCode())
+                        .build();
+                if (this.findHolidayByHolidayUnique(holiday)) {
+                    holidayWeekend.add(holiday);
+                }
+            }
+            startDate = startDate.plusDays(1);
+        }
+        return this.holidayRepository.saveAll(holidayWeekend);
+    }
+
+    private GeoCountry getCountryByCode(String countryCode){
+        Optional<GeoCountry> geoCountry = geoCountryRepository.findByCountryCode(countryCode);
+        if (geoCountry.isPresent()) {
+            return geoCountry.get();
+        }else {
+            throw new RuntimeException("El pais con código: "+countryCode+" no existe");
+        }
+    }
+
+    public Boolean findHolidayByHolidayUnique(Holiday holiday) {
+
+        Optional<Holiday> holidayTmp = this.holidayRepository.findByCountryCodeAndHolidayDate(holiday.getCountryCode(), holiday.getHolidayDate());
+        return holidayTmp.isEmpty();
+
     }
 }

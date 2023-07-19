@@ -6,8 +6,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
 @Data
 @Builder
 @Document(collection = "geo_location")
@@ -23,7 +21,6 @@ public class GeoLocation {
     private String name;
     private String areaPhoneCode;
     private String zipCode;
-    private List<Holiday> holidays;
     @Version
     private Long version;
 }

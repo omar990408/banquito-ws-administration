@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.banquito.administration.model;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,5 +19,4 @@ public class GeoCountry {
     private String name;
     private String phoneCode;
     private List<GeoStructure> geoStructures;
-    private List<Holiday> holidays;
 }

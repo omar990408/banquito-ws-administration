@@ -3,9 +3,7 @@ package ec.edu.espe.arquitectura.banquito.administration.controller;
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.HolidayReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.res.HolidayRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.Holiday;
-import ec.edu.espe.arquitectura.banquito.administration.repository.HolidayRepository;
 import ec.edu.espe.arquitectura.banquito.administration.service.HolidayService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +49,16 @@ public class HolidayController {
     public  ResponseEntity<List<HolidayRes>> findByGeoLocationId(@PathVariable String geoLocationId){
         List<HolidayRes> holidayRes = this.holidayService.findByLocationId(geoLocationId);
         return ResponseEntity.ok().body(holidayRes);
+    }
+
+    @PostMapping("/holidayCountry/generate-weekends/{id}")
+    public ResponseEntity<List<Holiday>> generateHolidays(
+            @PathVariable String id,
+            @RequestParam Integer year,
+            @RequestParam Integer month,
+            @RequestParam(defaultValue = "false") Boolean saturday,
+            @RequestParam(defaultValue = "false") Boolean sunday){
+        return ResponseEntity.ok().body(this.holidayService.generateHolidaysWeekendsCountries(year, month, saturday, sunday,id));
     }
 
 
