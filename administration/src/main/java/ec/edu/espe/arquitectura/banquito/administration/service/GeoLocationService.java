@@ -1,6 +1,6 @@
 package ec.edu.espe.arquitectura.banquito.administration.service;
 
-import ec.edu.espe.arquitectura.banquito.administration.dto.HolidayDto;
+import ec.edu.espe.arquitectura.banquito.administration.dto.req.HolidayReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.GeoLocationReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.res.GeoLocationRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoLocation;
@@ -9,7 +9,7 @@ import ec.edu.espe.arquitectura.banquito.administration.repository.GeoLocationRe
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.GeoLocationMapper;
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.HolidayMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -28,7 +28,7 @@ public class GeoLocationService {
         this.holidayMapper = holidayMapper;
     }
 
-    @Transactional
+
     public GeoLocation create (GeoLocationReq geoLocationReq) {
         Optional<GeoLocation> geoLocationTmp = this.geoLocationRepository.
                 findByCountryCodeAndName(geoLocationReq.getCountryCode(), geoLocationReq.getName());
@@ -36,10 +36,11 @@ public class GeoLocationService {
             throw new RuntimeException("Ya existe un registro con el mismo nombre");
         }else {
             GeoLocation geoLocation = geoLocationMapper.toGeoLocation(geoLocationReq);
+            geoLocation.setUuid(UUID.randomUUID().toString());
             return this.geoLocationRepository.save(geoLocation);
         }
     }
-    @Transactional
+
     public GeoLocation update (String id, GeoLocationReq geoLocationReq) {
         Optional<GeoLocation> geoLocationTmp = this.geoLocationRepository.findById(id);
         if (geoLocationTmp.isEmpty()){
@@ -51,10 +52,10 @@ public class GeoLocationService {
         }
     }
 
-    @Transactional
-    public GeoLocation addHoliday(String id, HolidayDto holidayDto){
+
+    public GeoLocation addHoliday(String id, HolidayReq holidayReq){
         GeoLocation geoLocation = this.geoLocationRepository.findById(id).orElseThrow(() -> new RuntimeException("No existe la locación"));
-        Holiday holiday = this.holidayMapper.toHoliday(holidayDto);
+        Holiday holiday = this.holidayMapper.toHoliday(holidayReq);
         if(geoLocation.getHolidays() == null){
             geoLocation.setHolidays(new ArrayList<>());
         }
@@ -70,8 +71,7 @@ public class GeoLocationService {
         return this.geoLocationRepository.save(geoLocation);
     }
 
-    @Transactional
-    public GeoLocation updateHoliday(String id, Date date, HolidayDto holidayDto){
+    public GeoLocation updateHoliday(String id, Date date, HolidayReq holidayReq){
         GeoLocation geoLocation = this.geoLocationRepository.findById(id).orElseThrow(() -> new RuntimeException("No existe la locación"));
         if(geoLocation.getHolidays() == null){
             geoLocation.setHolidays(new ArrayList<>());
@@ -81,7 +81,7 @@ public class GeoLocationService {
         if (!holidaysList.isEmpty()) {
             for (Holiday holidayTmp : holidaysList) {
                 if (holidayTmp.getHolidayDate().equals(date)) {
-                    this.holidayMapper.updateHoliday(holidayDto, holidayTmp);
+                    this.holidayMapper.updateHoliday(holidayReq, holidayTmp);
                     existHoliday = true;
                     break;
                 }
@@ -169,6 +169,14 @@ public class GeoLocationService {
     public List<GeoLocationRes> findByCountryCodeAndLevelParentName(String countryCode, String levelParentName){
         List<GeoLocation> geoLocation = this.geoLocationRepository.findByCountryCodeAndLevelParentName(countryCode, levelParentName);
         return this.geoLocationMapper.toGeoLocationResList(geoLocation);
+    }
+
+    public GeoLocationRes findByUuid(String uuid){
+        Optional<GeoLocation> geoLocation = this.geoLocationRepository.findByUuid(uuid);
+        if (geoLocation.isEmpty()){
+            throw new RuntimeException("No se encontro resultados");
+        }
+        return this.geoLocationMapper.toGeoLocationRes(geoLocation.get());
     }
 
 }

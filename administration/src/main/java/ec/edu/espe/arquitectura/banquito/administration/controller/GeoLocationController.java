@@ -1,6 +1,6 @@
 package ec.edu.espe.arquitectura.banquito.administration.controller;
 
-import ec.edu.espe.arquitectura.banquito.administration.dto.HolidayDto;
+import ec.edu.espe.arquitectura.banquito.administration.dto.req.HolidayReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.GeoLocationReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.res.GeoLocationRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoLocation;
@@ -55,10 +55,16 @@ public class GeoLocationController {
         return ResponseEntity.ok().body(geoLocationRes);
     }
 
+    @GetMapping("/findByUuid/{uuid}")
+    public ResponseEntity<GeoLocationRes> findByUuid(@PathVariable String uuid){
+        GeoLocationRes geoLocationRes = this.geoLocationService.findByUuid(uuid);
+        return ResponseEntity.ok().body(geoLocationRes);
+    }
+
     @PutMapping("/addHoliday/{id}")
-    public ResponseEntity<Holiday> addHoliday(@PathVariable String id, @RequestBody HolidayDto holidayDto){
+    public ResponseEntity<Holiday> addHoliday(@PathVariable String id, @RequestBody HolidayReq holidayReq){
         try{
-            GeoLocation geoLocation = this.geoLocationService.addHoliday(id, holidayDto);
+            GeoLocation geoLocation = this.geoLocationService.addHoliday(id, holidayReq);
             return ResponseEntity.ok().body(geoLocation.getHolidays().get(geoLocation.getHolidays().size()-1));
         }catch (RuntimeException rte){
             return ResponseEntity.badRequest().build();
@@ -69,9 +75,9 @@ public class GeoLocationController {
     public ResponseEntity<GeoLocation> updateHoliday(
             @PathVariable String id,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
-            @RequestBody HolidayDto holidayDto){
+            @RequestBody HolidayReq holidayReq){
         try{
-            GeoLocation geoLocation = this.geoLocationService.updateHoliday(id,date, holidayDto);
+            GeoLocation geoLocation = this.geoLocationService.updateHoliday(id,date, holidayReq);
             return ResponseEntity.ok().body(geoLocation);
         }catch (RuntimeException rte){
             return ResponseEntity.badRequest().build();

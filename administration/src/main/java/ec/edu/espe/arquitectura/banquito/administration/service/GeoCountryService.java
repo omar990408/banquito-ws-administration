@@ -1,6 +1,6 @@
 package ec.edu.espe.arquitectura.banquito.administration.service;
 
-import ec.edu.espe.arquitectura.banquito.administration.dto.HolidayDto;
+import ec.edu.espe.arquitectura.banquito.administration.dto.req.HolidayReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.GeoCountryReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.res.GeoCountryRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoCountry;
@@ -9,7 +9,6 @@ import ec.edu.espe.arquitectura.banquito.administration.repository.GeoCountryRep
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.GeoCountryMapper;
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.HolidayMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -29,7 +28,7 @@ public class GeoCountryService {
         this.holidayMapper = holidayMapper;
     }
 
-    @Transactional
+
     public GeoCountry create(GeoCountryReq geoCountryReq){
         Optional<GeoCountry> geoCountryTmp = this.geoCountryRepository.findByCountryCode(geoCountryReq.getCountryCode());
         if(geoCountryTmp.isPresent()){
@@ -40,23 +39,23 @@ public class GeoCountryService {
         }
     }
 
-    @Transactional
+
     public GeoCountry update (String code,GeoCountryReq geoCountryReq){
         GeoCountry geoCountry = getCountryByCode(code);
         this.geoCountryMapper.updatePais(geoCountryReq, geoCountry);
         return this.geoCountryRepository.save(geoCountry);
     }
 
-    @Transactional
+
     public void delete(String code){
         GeoCountry geoCountry = getCountryByCode(code);
         this.geoCountryRepository.delete(geoCountry);
     }
 
-    @Transactional
-    public GeoCountry addHoliday(String code, HolidayDto holidayDto){
+
+    public GeoCountry addHoliday(String code, HolidayReq holidayReq){
         GeoCountry geoCountry = getCountryByCode(code);
-        Holiday holiday = this.holidayMapper.toHoliday(holidayDto);
+        Holiday holiday = this.holidayMapper.toHoliday(holidayReq);
         if(geoCountry.getHolidays() == null){
             geoCountry.setHolidays(new ArrayList<>());
         }
@@ -72,8 +71,7 @@ public class GeoCountryService {
         return this.geoCountryRepository.save(geoCountry);
     }
 
-    @Transactional
-    public GeoCountry updateHoliday(String code, Date date,HolidayDto holidayDto){
+    public GeoCountry updateHoliday(String code, Date date, HolidayReq holidayReq){
         GeoCountry geoCountry = getCountryByCode(code);
         if(geoCountry.getHolidays() == null){
             geoCountry.setHolidays(new ArrayList<>());
@@ -83,7 +81,7 @@ public class GeoCountryService {
         if (!holidaysList.isEmpty()) {
             for (Holiday holidayTmp : holidaysList) {
                 if (holidayTmp.getHolidayDate().equals(date)) {
-                    this.holidayMapper.updateHoliday(holidayDto, holidayTmp);
+                    this.holidayMapper.updateHoliday(holidayReq, holidayTmp);
                     existHoliday = true;
                     break;
                 }

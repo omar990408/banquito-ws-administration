@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.banquito.administration.model;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -30,4 +31,6 @@ public class Branch {
     private String line2;
     private BigDecimal latitude;
     private BigDecimal longitude;
+    @Version
+    private Long version;
 }

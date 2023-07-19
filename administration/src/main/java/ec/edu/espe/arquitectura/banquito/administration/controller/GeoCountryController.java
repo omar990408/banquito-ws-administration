@@ -1,6 +1,6 @@
 package ec.edu.espe.arquitectura.banquito.administration.controller;
 
-import ec.edu.espe.arquitectura.banquito.administration.dto.HolidayDto;
+import ec.edu.espe.arquitectura.banquito.administration.dto.req.HolidayReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.GeoCountryReq;
 import ec.edu.espe.arquitectura.banquito.administration.dto.res.GeoCountryRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoCountry;
@@ -48,9 +48,9 @@ public class GeoCountryController {
     }
 
     @PutMapping("/addHoliday/{code}")
-    public ResponseEntity<Holiday> addHoliday(@PathVariable String code, @RequestBody HolidayDto holidayDto){
+    public ResponseEntity<Holiday> addHoliday(@PathVariable String code, @RequestBody HolidayReq holidayReq){
         try{
-            GeoCountry geoCountry = this.geoCountryService.addHoliday(code, holidayDto);
+            GeoCountry geoCountry = this.geoCountryService.addHoliday(code, holidayReq);
             return ResponseEntity.ok().body(geoCountry.getHolidays().get(geoCountry.getHolidays().size()-1));
         }catch (RuntimeException rte){
             return ResponseEntity.badRequest().build();
@@ -61,9 +61,9 @@ public class GeoCountryController {
     public ResponseEntity<GeoCountry> updateHoliday(
             @PathVariable String code,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
-            @RequestBody HolidayDto holidayDto){
+            @RequestBody HolidayReq holidayReq){
         try{
-            GeoCountry geoCountry = this.geoCountryService.updateHoliday(code,date, holidayDto);
+            GeoCountry geoCountry = this.geoCountryService.updateHoliday(code,date, holidayReq);
             return ResponseEntity.ok().body(geoCountry);
         }catch (RuntimeException rte){
             return ResponseEntity.badRequest().build();

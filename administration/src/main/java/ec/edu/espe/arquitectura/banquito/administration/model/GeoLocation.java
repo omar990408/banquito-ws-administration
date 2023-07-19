@@ -14,11 +14,12 @@ import java.util.List;
 public class GeoLocation {
     @Id
     private String id;
+    private String uuid;
     private String countryCode;
-    private String levelCode;
-    private String levelName;
     private String levelParentId;
     private String levelParentName;
+    private String levelCode;
+    private String levelName;
     private String name;
     private String areaPhoneCode;
     private String zipCode;
