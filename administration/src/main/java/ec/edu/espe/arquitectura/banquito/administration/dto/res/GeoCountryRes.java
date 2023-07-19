@@ -1,6 +1,5 @@
 package ec.edu.espe.arquitectura.banquito.administration.dto.res;
 
-import ec.edu.espe.arquitectura.banquito.administration.dto.HolidayDto;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,6 +12,4 @@ public class GeoCountryRes {
     private String name;
     private String phoneCode;
     private List<GeoStructureRes> geoStructures;
-    private List<HolidayDto> holidays;
-
 }

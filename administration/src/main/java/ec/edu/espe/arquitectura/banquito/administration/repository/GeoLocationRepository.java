@@ -11,6 +11,7 @@ public interface GeoLocationRepository extends MongoRepository<GeoLocation,Strin
 
     Optional <GeoLocation> findByCountryCodeAndName(String countryCode, String name);
     List<GeoLocation> findByCountryCodeAndLevelParentName(String countryCode, String levelParentName);
+    Optional<GeoLocation> findByUuid(String uuid);
 
 
 

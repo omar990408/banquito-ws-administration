@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @Builder
 public class BranchRes {
     private String locationId;
+    private String locationName;
     private String code;
     private String name;
     private String emailAddress;

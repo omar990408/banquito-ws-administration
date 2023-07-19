@@ -5,12 +5,14 @@ import ec.edu.espe.arquitectura.banquito.administration.dto.res.BankEntityRes;
 import ec.edu.espe.arquitectura.banquito.administration.dto.res.BranchRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.BankEntity;
 import ec.edu.espe.arquitectura.banquito.administration.model.Branch;
+import ec.edu.espe.arquitectura.banquito.administration.model.GeoLocation;
 import ec.edu.espe.arquitectura.banquito.administration.repository.BankEntityRepository;
 import ec.edu.espe.arquitectura.banquito.administration.repository.BranchRepository;
+import ec.edu.espe.arquitectura.banquito.administration.repository.GeoLocationRepository;
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.BankEntityMapper;
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.BranchMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,12 +26,15 @@ public class BankEntityService {
     private final BranchRepository branchRepository;
     private final BranchMapper branchMapper;
 
+    private final GeoLocationRepository geoLocationRepository;
 
-    public BankEntityService(BankEntityRepository bankEntityRepository, BankEntityMapper bankEntityMapper, BranchRepository branchRepository, BranchMapper branchMapper) {
+
+    public BankEntityService(BankEntityRepository bankEntityRepository, BankEntityMapper bankEntityMapper, BranchRepository branchRepository, BranchMapper branchMapper, GeoLocationRepository geoLocationRepository) {
         this.bankEntityRepository = bankEntityRepository;
         this.bankEntityMapper = bankEntityMapper;
         this.branchRepository = branchRepository;
         this.branchMapper = branchMapper;
+        this.geoLocationRepository = geoLocationRepository;
     }
 
     private BankEntity getBankEntityByInternationalCode(String internationalCode){
@@ -45,7 +50,7 @@ public class BankEntityService {
         return this.bankEntityMapper.toBankEntityRes(getBankEntityByInternationalCode(internationalCode));
     }
 
-    @Transactional
+
     public Branch createBranch(BranchReq branchReq){
         Optional<Branch> branchTmp = this.branchRepository.findByCode(branchReq.getCode());
         if(branchTmp.isPresent()){
@@ -59,14 +64,14 @@ public class BankEntityService {
         }
     }
 
-    @Transactional
+
     public Branch updateBranch(String code, BranchReq branchReq){
         Branch branch = getBranchByCode(code);
         this.branchMapper.updateBranch(branchReq, branch);
         return this.branchRepository.save(branch);
     }
 
-    @Transactional
+
     public Branch deleteBranch(String code){
         Branch branch = getBranchByCode(code);
         branch.setState("INA");
@@ -75,12 +80,18 @@ public class BankEntityService {
 
     public BranchRes findBranchByCode(String code){
         Branch branch = getBranchByCode(code);
-        return this.branchMapper.toBranchRes(branch);
+        BranchRes branchRes = this.branchMapper.toBranchRes(branch);
+        branchRes.setLocationName(getGeoLocationNameByUuid(branch.getLocationId()));
+        return branchRes;
     }
 
     public List<BranchRes> findAllBranchesByState(String state){
         List<Branch> branches = this.branchRepository.findAllByStateContaining(state);
-        return this.branchMapper.toBranchRes(branches);
+        List<BranchRes> branchRes = this.branchMapper.toBranchRes(branches);
+        for (BranchRes branch: branchRes) {
+            branch.setLocationName(getGeoLocationNameByUuid(branch.getLocationId()));
+        }
+        return branchRes;
     }
 
     private Branch getBranchByCode(String code) {
@@ -89,6 +100,15 @@ public class BankEntityService {
             return branch.get();
         }else{
             throw new RuntimeException("No existe la sucursal con código: "+code);
+        }
+    }
+
+    private String getGeoLocationNameByUuid(String uuid) {
+        Optional<GeoLocation> geoLocation = this.geoLocationRepository.findByUuid(uuid);
+        if(geoLocation.isPresent()){
+            return geoLocation.get().getName();
+        }else{
+            throw new RuntimeException("No existe la locación con código: "+uuid);
         }
     }
 }
