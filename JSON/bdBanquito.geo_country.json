@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "64bb655cf4ad76655495e68f"
+  },
+  "countryCode": "ECU",
+  "name": "Ecuador",
+  "phoneCode": "593",
+  "geoStructures": [
+    {
+      "levelCode": 1,
+      "name": "Provincia",
+      "version": 0
+    },
+    {
+      "levelCode": 2,
+      "name": "Parroquia",
+      "version": 0
+    },
+    {
+      "levelCode": 3,
+      "name": "Canton",
+      "version": 0
+    }
+  ]
+}]

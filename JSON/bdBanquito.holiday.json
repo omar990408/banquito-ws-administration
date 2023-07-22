@@ -1,0 +1,492 @@
+[{
+  "_id": {
+    "$oid": "64bc4cc7ea87d477becbd1cc"
+  },
+  "uuid": "03443538-5a5d-4139-ba8a-37fdde10222e",
+  "holidayDate": {
+    "$date": "2022-01-01T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Año nuevo",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4ce0ea87d477becbd1cd"
+  },
+  "uuid": "07f47901-7b17-42f8-90ab-b33be49b40b1",
+  "holidayDate": {
+    "$date": "2023-02-20T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Carnaval",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4d13ea87d477becbd1ce"
+  },
+  "uuid": "94ea94c6-202a-46c5-ace4-59e7e0c77805",
+  "holidayDate": {
+    "$date": "2022-02-21T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Carnaval",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4d4bea87d477becbd1cf"
+  },
+  "uuid": "5a9e859a-7455-4e08-b493-49d775ffe1be",
+  "holidayDate": {
+    "$date": "2023-04-07T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Viernes Santo",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4d66ea87d477becbd1d0"
+  },
+  "uuid": "0ddd49c2-9c38-4f7d-b035-2c9fc4730fd2",
+  "holidayDate": {
+    "$date": "2023-05-01T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Dia del Trabajo",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4d81ea87d477becbd1d1"
+  },
+  "uuid": "d0cc2d97-be1f-4a39-80b7-4f9e12e4347b",
+  "holidayDate": {
+    "$date": "2023-05-24T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Batalla de Pichincha",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4db8ea87d477becbd1d2"
+  },
+  "uuid": "3d3bd5ed-ab11-4e43-83b6-4287ff9b1683",
+  "holidayDate": {
+    "$date": "2023-08-10T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Primer grito de la independencia",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4ddcea87d477becbd1d3"
+  },
+  "uuid": "cf9fef78-1ad3-4b24-aff5-d657b6dd4a5f",
+  "holidayDate": {
+    "$date": "2023-10-09T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Independencia de Guayaquil",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4e14ea87d477becbd1d4"
+  },
+  "uuid": "43a29581-6e3e-4e2a-9ac7-29659fc5c757",
+  "holidayDate": {
+    "$date": "2023-11-02T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Dia de los difuntos",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4e26ea87d477becbd1d5"
+  },
+  "uuid": "41a90bc1-70a2-479f-86bf-741c1cefc709",
+  "holidayDate": {
+    "$date": "2023-11-02T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Independencia de Cuenca",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4e39ea87d477becbd1d6"
+  },
+  "uuid": "c0bc562f-e80c-4457-af92-1390c383234c",
+  "holidayDate": {
+    "$date": "2023-12-06T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Fundacion de Quito",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4e4fea87d477becbd1d7"
+  },
+  "uuid": "b66439f4-2d7f-4481-aef7-b083bc591ada",
+  "holidayDate": {
+    "$date": "2023-12-25T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "name": "Navidad",
+  "type": "Nacional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4f2cea87d477becbd1d8"
+  },
+  "uuid": "8105e2ff-bd90-44b4-a219-3b5248014394",
+  "holidayDate": {
+    "$date": "2023-01-21T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "7a47d7e4-f846-4a11-8516-7312fc3f7639",
+  "name": "Cantonizacion Santa Elena",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc4f6eea87d477becbd1d9"
+  },
+  "uuid": "657d8072-0328-4319-8eaa-0366d681dad6",
+  "holidayDate": {
+    "$date": "2023-02-11T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "bc650fbf-c6e5-4558-91da-d95defa8016e",
+  "name": "Provincializacion de Napo",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5039ea87d477becbd1da"
+  },
+  "uuid": "9d2e71e2-a844-41f0-8f21-b2d380b628c2",
+  "holidayDate": {
+    "$date": "2023-02-13T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "57b58b00-fbb6-42a3-afda-e39dcc0f2295",
+  "name": "Provincializacion de Sucumbíos",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc50b7ea87d477becbd1db"
+  },
+  "uuid": "ed945b42-dd2b-43a3-bed9-9e05062c8d51",
+  "holidayDate": {
+    "$date": "2023-02-18T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "52792e19-4d72-45f7-88b3-67734c94430c",
+  "name": "Provincializacion de Galapagos",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc50ddea87d477becbd1dc"
+  },
+  "uuid": "13b05f05-5d8b-4be0-9b2c-c0010973c250",
+  "holidayDate": {
+    "$date": "2023-04-01T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "9a674852-b533-483c-a15d-1508e9f5bac2",
+  "name": "Provincializacion de Cotopaxi",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5198ea87d477becbd1dd"
+  },
+  "uuid": "1265be42-0d19-4954-9012-eccac9b71e54",
+  "holidayDate": {
+    "$date": "2023-04-12T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "de6ce4e0-2cea-4d63-b817-ec2618583073",
+  "name": "Fundacion de Cuenca",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5267ea87d477becbd1df"
+  },
+  "uuid": "8c8aa06f-7cf2-48b5-bc5d-3f4342c82fdf",
+  "holidayDate": {
+    "$date": "2023-04-16T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "470a3284-1842-45d1-867e-198ecd74c93d",
+  "name": "Cantonizacion de Azogues",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc533bea87d477becbd1e0"
+  },
+  "uuid": "1f8b987e-84a9-42e0-9d4f-c8c53999e9c8",
+  "holidayDate": {
+    "$date": "2023-04-23T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "990c9586-d158-4bf3-aeb7-e7b32752b2a0",
+  "name": "Provincializacion de el Oro",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5795ea87d477becbd1e3"
+  },
+  "uuid": "ff89b96d-e7dc-4084-8da8-2cfb99bf4c1c",
+  "holidayDate": {
+    "$date": "2023-04-20T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "9017553c-8432-409b-90dc-b110ebd81c0a",
+  "name": "Cantonizacion de Coca",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc584cea87d477becbd1e6"
+  },
+  "uuid": "1a43a798-98e9-40fb-94b4-be9f8e78cecc",
+  "holidayDate": {
+    "$date": "2023-05-12T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "06bba2c1-01db-4496-85ca-a7a46d9bf6e9",
+  "name": "Cantonizacion Puyo",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc594aea87d477becbd1e9"
+  },
+  "uuid": "884dbb01-5c8c-427b-9117-5ecd7dedc680",
+  "holidayDate": {
+    "$date": "2023-05-29T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "f332124c-a0fc-4834-b98b-e34320df3d4e",
+  "name": "Cantonizacion Macas",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5aa8ea87d477becbd1eb"
+  },
+  "uuid": "1dc00856-dea7-4cd0-9020-bdeef41e4656",
+  "holidayDate": {
+    "$date": "2023-06-26T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "26d2994f-9265-4b2c-9b83-1df7de83aab3",
+  "name": "Fiestas Samborondon",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5b69ea87d477becbd1ec"
+  },
+  "uuid": "5c1eaf11-bdd4-4fa4-a5fe-db334996c364",
+  "holidayDate": {
+    "$date": "2023-07-25T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "122cb19a-c25c-4ca8-9b1e-a11f8f96e985",
+  "name": "Fundacion de Guayaquil",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5bd8ea87d477becbd1ee"
+  },
+  "uuid": "7cf72a3f-1005-45c5-965a-192e83de6887",
+  "holidayDate": {
+    "$date": "2023-11-11T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "66530741-e3aa-444f-b18a-593daba8e68e",
+  "name": "Independencia de Latacunga",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5c47ea87d477becbd1ef"
+  },
+  "uuid": "91924e1d-a877-413a-af18-8eb7c11a47c8",
+  "holidayDate": {
+    "$date": "2023-08-05T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "32d6cba5-9e74-4c07-a314-b293db3d74db",
+  "name": "Independizacion Esmeraldas",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5c92ea87d477becbd1f0"
+  },
+  "uuid": "5dc7f4c8-dd3b-41ac-9ddc-b1f0ef452eaf",
+  "holidayDate": {
+    "$date": "2023-07-30T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "dff36cea-68f2-4fad-9df4-74d71bcbb912",
+  "name": "Provincializacion de Orellana",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5d37ea87d477becbd1f2"
+  },
+  "uuid": "a6415c7b-2ca6-461c-8967-51cb384ef5d1",
+  "holidayDate": {
+    "$date": "2023-09-16T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "08ccac96-080d-4cc2-8faf-41c2c301e104",
+  "name": "Fundacion de Duran",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5debea87d477becbd1f4"
+  },
+  "uuid": "b819b277-dc1e-4c3e-87c7-8a1ae22b2529",
+  "holidayDate": {
+    "$date": "2023-10-07T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "4ec4f00e-037c-4c36-bd7c-96639c7323f6",
+  "name": "Fundacion de Quevedo",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5e66ea87d477becbd1f6"
+  },
+  "uuid": "4e6085a4-f539-4d8f-9125-5f41485f6893",
+  "holidayDate": {
+    "$date": "2023-11-10T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "ca60b7fc-ddd7-4b84-98ae-7dc37573eee1",
+  "name": "Independizacion de Guaranda",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5eb8ea87d477becbd1f8"
+  },
+  "uuid": "a41a6f61-42b0-4326-a95b-361329a4b0eb",
+  "holidayDate": {
+    "$date": "2023-11-04T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "fa46aea4-568b-42fc-a412-e231b246bafa",
+  "name": "Cantonizacion Manta",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5f7bea87d477becbd1f9"
+  },
+  "uuid": "e3d9b479-0394-490b-b891-485ecd348bde",
+  "holidayDate": {
+    "$date": "2023-11-04T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "99ff8030-9239-4a56-b231-29c348240b4c",
+  "name": "Independencia de Loja",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc5ff2ea87d477becbd1fa"
+  },
+  "uuid": "b804961c-17da-41dd-9e63-59edffdd98aa",
+  "holidayDate": {
+    "$date": "2023-11-04T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "33965a5c-8135-4e9f-8293-69c44e17509d",
+  "name": "Provincializacion de Carchi",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc6041ea87d477becbd1fc"
+  },
+  "uuid": "f6fe58df-2784-4d68-a9bd-3bc136ed50c9",
+  "holidayDate": {
+    "$date": "2023-12-22T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "c22497bf-8f7b-4d98-a7d6-80b1ab44e94f",
+  "name": "Cantonizacion de Salinas",
+  "type": "Regional",
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc60b4ea87d477becbd1fd"
+  },
+  "uuid": "8d5108b3-95af-4837-9375-9cdc253cf3b9",
+  "holidayDate": {
+    "$date": "2023-11-21T00:00:00.000Z"
+  },
+  "countryCode": "ECU",
+  "geoLocationId": "32d6cba5-9e74-4c07-a314-b293db3d74db",
+  "name": "Provincializacion Esmeraldas",
+  "type": "Regional",
+  "version": 0
+}]
