@@ -57,4 +57,11 @@ public class GeoLocationController {
         return ResponseEntity.ok().body(geoLocationRes);
     }
 
+    @GetMapping("/countryCode-levelCode/{countryCode}/{levelCode}")
+    public ResponseEntity<List<GeoLocationRes>> findByCountryCodeAndLevelCode(@PathVariable String countryCode, @PathVariable String levelCode){
+        List<GeoLocationRes> geoLocationRes = this.geoLocationService.findByCountryCodeAndLevelCode(countryCode, levelCode);
+        return ResponseEntity.ok().body(geoLocationRes);
+    }
+
+
 }

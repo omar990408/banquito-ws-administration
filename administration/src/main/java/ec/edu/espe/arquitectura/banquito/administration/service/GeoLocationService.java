@@ -68,4 +68,12 @@ public class GeoLocationService {
         return this.geoLocationMapper.toGeoLocationRes(geoLocation.get());
     }
 
+    public List<GeoLocationRes> findByCountryCodeAndLevelCode(String countryCode, String levelCode){
+        List<GeoLocation> geoLocation = this.geoLocationRepository.findByCountryCodeAndLevelCode(countryCode, levelCode);
+        if (geoLocation.isEmpty()){
+            throw new RuntimeException("No se encontro resultados");
+        }
+        return this.geoLocationMapper.toGeoLocationResList(geoLocation);
+    }
+
 }
