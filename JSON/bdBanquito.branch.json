@@ -1,0 +1,250 @@
+[{
+  "_id": {
+    "$oid": "64bc72b1ea87d477becbd231"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "f1cffe4f-0aaa-49af-82a4-bb1f50b9ac44",
+  "code": "PICHIXXBQ1002",
+  "name": "Banquito Norte II",
+  "uniqueKey": "404940fc-91dc-4be1-841c-081163d603d9",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_norte@bank.com",
+  "phoneNumber": "0982713133",
+  "line1": "Amazonas",
+  "line2": "24 Balsas",
+  "latitude": {
+    "$numberDecimal": "-0.22925"
+  },
+  "longitude": {
+    "$numberDecimal": "-48.52495"
+  },
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc7345ea87d477becbd232"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "90888fa5-cb75-4c4b-aa87-14d2d462b785",
+  "code": "PICHIXXBQ1003",
+  "name": "Banquito Norte KENEDY",
+  "uniqueKey": "8189605c-74ac-4050-bfec-5b0030955e28",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_kenedy@bank.com",
+  "phoneNumber": "09827131523",
+  "line1": "Kenedy",
+  "line2": "La Luz",
+  "latitude": {
+    "$numberDecimal": "-0.35925"
+  },
+  "longitude": {
+    "$numberDecimal": "-46.52495"
+  },
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc7546ea87d477becbd233"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "b96bfcc3-8c29-4b7b-80ce-30e490c87fd3",
+  "code": "PICHIXXBQ1004",
+  "name": "Banquito Comite del Pueblo",
+  "uniqueKey": "b9b470d5-9b82-42d3-9654-d9db5199a6b2",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_comite@bank.com",
+  "phoneNumber": "0982713123",
+  "line1": "Jorge Garcés",
+  "line2": "Baltazar ",
+  "latitude": {
+    "$numberDecimal": "-0.58925"
+  },
+  "longitude": {
+    "$numberDecimal": "-66.52495"
+  },
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc772bea87d477becbd234"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "eaa37a65-eeec-4361-ac30-d8953cf6920e",
+  "code": "PICHIXXBQ1005",
+  "name": "Banquito Centro",
+  "uniqueKey": "1207a377-87e9-4630-bb02-4071639b6488",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_centro@bank.com",
+  "phoneNumber": "0982456123",
+  "line1": "Mariscal Sucre",
+  "line2": "6 De Diciembre",
+  "latitude": {
+    "$numberDecimal": "-0.54525"
+  },
+  "longitude": {
+    "$numberDecimal": "-76.52495"
+  },
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc77e9ea87d477becbd235"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "eaa37a65-eeec-4361-ac30-d8953cf6920e",
+  "code": "GUAYXXBQ1001",
+  "name": "Banquito Olmedo",
+  "uniqueKey": "521d91d0-cb5c-4521-a3e6-ea52e5b22782",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_olmedo@gye.bank.com",
+  "phoneNumber": "0982456123",
+  "line1": "Olmedo",
+  "line2": "6 De Diciembre",
+  "latitude": {
+    "$numberDecimal": "-0.44725"
+  },
+  "longitude": {
+    "$numberDecimal": "-26.52495"
+  },
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc7b1aea87d477becbd236"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "26d2994f-9265-4b2c-9b83-1df7de83aab3",
+  "code": "GUAYXXBQ1002",
+  "name": "Banquito Samborondon",
+  "uniqueKey": "cf5fdc4d-40b3-4e57-9974-c8fce1379ca6",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_samborondon@gye.bank.com",
+  "phoneNumber": "0981234585",
+  "line1": "Samborondon",
+  "line2": "6 De Diciembre",
+  "latitude": {
+    "$numberDecimal": "-0.44725"
+  },
+  "longitude": {
+    "$numberDecimal": "-26.52495"
+  },
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc7d9eea87d477becbd237"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "aec9a2ee-d89e-4afb-b164-455d86705cc4",
+  "code": "PICHIXXBQ1006",
+  "name": "Banquito Sangolqui",
+  "uniqueKey": "54b77829-43a3-43b4-923e-3742c599a615",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_sangolqui@bank.com",
+  "phoneNumber": "0981231457",
+  "line1": "Autopista Gnr. Rumiñahui",
+  "line2": "6 De Diciembre",
+  "latitude": {
+    "$numberDecimal": "-0.14725"
+  },
+  "longitude": {
+    "$numberDecimal": "-16.52491"
+  },
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc7e0dea87d477becbd238"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "79ee0362-be9e-4855-815e-1e0996301202",
+  "code": "CUENXXBQ1001",
+  "name": "Banquito Bellavista",
+  "uniqueKey": "56319982-842f-4982-a1e4-465b746d0be0",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_bellavista@cue.bank.com",
+  "phoneNumber": "0981231457",
+  "line1": "San lorenzo",
+  "line2": "10 De Diciembre",
+  "latitude": {
+    "$numberDecimal": "-0.147725"
+  },
+  "longitude": {
+    "$numberDecimal": "-36.42491"
+  },
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc7ec2ea87d477becbd239"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "ca60b7fc-ddd7-4b84-98ae-7dc37573eee1",
+  "code": "BOLIXXBQ1001",
+  "name": "Banquito Guaranda",
+  "uniqueKey": "8d8fd910-1bfe-4e73-886f-86bff2c77b38",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_guaranda@bank.com",
+  "phoneNumber": "0981231457",
+  "line1": "San tomas",
+  "line2": "10 de agosto",
+  "latitude": {
+    "$numberDecimal": "-0.647725"
+  },
+  "longitude": {
+    "$numberDecimal": "-98.42491"
+  },
+  "version": 0
+},
+{
+  "_id": {
+    "$oid": "64bc7f5cea87d477becbd23a"
+  },
+  "bankEntityId": "64bc71e6e9a5d42c0b3029d2",
+  "locationId": "c22497bf-8f7b-4d98-a7d6-80b1ab44e94f",
+  "code": "SAELXXBQ1001",
+  "name": "Banquito Salinas",
+  "uniqueKey": "0941aef5-5881-4d4c-bd71-74513c69fdba",
+  "state": "ACT",
+  "creationDate": {
+    "$date": "2023-07-22T05:00:00.000Z"
+  },
+  "emailAddress": "banquito_salinas@bank.com",
+  "phoneNumber": "0981232237",
+  "line1": "Salinas",
+  "line2": "10 de agosto",
+  "latitude": {
+    "$numberDecimal": "-0.947725"
+  },
+  "longitude": {
+    "$numberDecimal": "-38.42491"
+  },
+  "version": 0
+}]
