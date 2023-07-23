@@ -10,5 +10,6 @@ public interface BranchRepository extends MongoRepository<Branch,String> {
     Optional<Branch> findByCode(String code);
     List<Branch> findAllByStateContaining(String state);
     List<Branch> findByLocationId(String locationId);
+    List<Branch> findByLocationIdAndState(String locationId, String state);
 
 }
