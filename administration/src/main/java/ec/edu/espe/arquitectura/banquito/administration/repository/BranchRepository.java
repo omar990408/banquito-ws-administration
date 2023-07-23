@@ -9,5 +9,6 @@ import java.util.Optional;
 public interface BranchRepository extends MongoRepository<Branch,String> {
     Optional<Branch> findByCode(String code);
     List<Branch> findAllByStateContaining(String state);
+    List<Branch> findByLocationId(String locationId);
 
 }

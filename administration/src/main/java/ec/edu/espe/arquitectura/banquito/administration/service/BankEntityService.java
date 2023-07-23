@@ -94,6 +94,14 @@ public class BankEntityService {
         return branchRes;
     }
 
+    public List<BranchRes> findAllBranchesByLocationId(String locationId){
+        List<Branch> branches = this.branchRepository.findByLocationId(locationId);
+        List<BranchRes> branchRes = this.branchMapper.toBranchRes(branches);
+        for (BranchRes branch: branchRes) {
+            branch.setLocationName(getGeoLocationNameByUuid(branch.getLocationId()));
+        }
+        return branchRes;
+    }
     private Branch getBranchByCode(String code) {
         Optional<Branch> branch = this.branchRepository.findByCode(code);
         if(branch.isPresent()){

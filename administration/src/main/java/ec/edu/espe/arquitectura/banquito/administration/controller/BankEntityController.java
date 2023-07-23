@@ -67,4 +67,10 @@ public class BankEntityController {
         List<BranchRes> branchRes = this.bankEntityService.findAllBranchesByState(state);
         return ResponseEntity.ok().body(branchRes);
     }
+
+    @GetMapping("/findBranches-location/{locationId}")
+    public ResponseEntity<List<BranchRes>> findAllbyLocation(@PathVariable String locationId){
+        List<BranchRes> branchRes = this.bankEntityService.findAllBranchesByLocationId(locationId);
+        return ResponseEntity.ok().body(branchRes);
+    }
 }
