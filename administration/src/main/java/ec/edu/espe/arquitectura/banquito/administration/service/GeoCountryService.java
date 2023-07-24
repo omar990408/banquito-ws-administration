@@ -29,6 +29,7 @@ public class GeoCountryService {
             throw new RuntimeException("Ya existe un pais con el codigo: "+geoCountryReq.getCountryCode());
         }else{
             GeoCountry geoCountry = geoCountryMapper.toGeoCountry(geoCountryReq);
+            geoCountry.setState("ACT");
             return this.geoCountryRepository.save(geoCountry);
         }
     }
@@ -36,6 +37,12 @@ public class GeoCountryService {
     public GeoCountry update (String code,GeoCountryReq geoCountryReq){
         GeoCountry geoCountry = getCountryByCode(code);
         this.geoCountryMapper.updatePais(geoCountryReq, geoCountry);
+        return this.geoCountryRepository.save(geoCountry);
+    }
+
+    public GeoCountry deleteLogic(String code){
+        GeoCountry geoCountry = getCountryByCode(code);
+        geoCountry.setState("INA");
         return this.geoCountryRepository.save(geoCountry);
     }
 
@@ -59,7 +66,7 @@ public class GeoCountryService {
     }
 
     public List<GeoCountryRes> getCountries(){
-        return this.geoCountryMapper.toRes(this.geoCountryRepository.findAll());
+        return this.geoCountryMapper.toRes(this.geoCountryRepository.findAllByStateContaining("ACT"));
     }
 
 }

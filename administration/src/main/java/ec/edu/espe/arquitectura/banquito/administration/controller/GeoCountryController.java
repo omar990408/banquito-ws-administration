@@ -44,6 +44,16 @@ public class GeoCountryController {
         this.geoCountryService.delete(code);
     }
 
+    @PutMapping("/deleteLogic/{code}")
+    public ResponseEntity<GeoCountry> deleteLogic(@PathVariable String code){
+        try{
+            GeoCountry geoCountry = this.geoCountryService.deleteLogic(code);
+            return ResponseEntity.ok().body(geoCountry);
+        }catch (RuntimeException rte){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
     @GetMapping("/findByCountryCode/{code}")
     public ResponseEntity<GeoCountryRes> findByCountryCode(@PathVariable String code){
         try{
