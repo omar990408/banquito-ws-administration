@@ -7,6 +7,7 @@ import ec.edu.espe.arquitectura.banquito.administration.repository.GeoCountryRep
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.GeoCountryMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -55,6 +56,10 @@ public class GeoCountryService {
         }else {
             throw new RuntimeException("El pais con código: "+countryCode+" no existe");
         }
+    }
+
+    public List<GeoCountryRes> getCountries(){
+        return this.geoCountryMapper.toRes(this.geoCountryRepository.findAll());
     }
 
 }
