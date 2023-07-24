@@ -7,6 +7,8 @@ import ec.edu.espe.arquitectura.banquito.administration.service.GeoCountryServic
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("api/v1/geoCountry")
@@ -50,6 +52,16 @@ public class GeoCountryController {
         }catch (RuntimeException rte){
             return ResponseEntity.badRequest().build();
         }
+    }
+    @GetMapping("/findCountriesList")
+    public ResponseEntity<List<GeoCountryRes>> findCountries(){
+        try{
+            List<GeoCountryRes>geoCountryRes=this.geoCountryService.getCountries();
+            return ResponseEntity.ok().body(geoCountryRes);
+        }catch (RuntimeException rte){
+            return ResponseEntity.badRequest().build();
+        }
+
     }
 
 }
