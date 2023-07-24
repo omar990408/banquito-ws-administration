@@ -18,5 +18,6 @@ public class GeoCountry {
     private String countryCode;
     private String name;
     private String phoneCode;
+    private String state;
     private List<GeoStructure> geoStructures;
 }
