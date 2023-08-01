@@ -9,7 +9,7 @@ WORKDIR /app
 COPY build.gradle settings.gradle /app/
 
 # Copia el directorio src que contiene el código fuente de tu aplicación
-COPY src
+COPY src /app/src
 
 # Ejecuta el comando 'gradle build' para construir la aplicación
 RUN ./gradlew build
