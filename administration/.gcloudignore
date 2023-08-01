@@ -1,0 +1,50 @@
+# Archivos específicos del IDE
+.gradle/
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+build/
+target/
+.vscode/
+
+# Archivos y directorios generados por Gradle
+.gradle/
+build/
+buildSrc/
+
+# Archivos y directorios de pruebas
+test-reports/
+test-results/
+**/test-output/
+**/testlogs/
+
+# Otros archivos y directorios que no se deben incluir en la imagen de Google Cloud
+node_modules/
+npm-debug.log
+yarn-error.log
+Dockerfile
+docker-compose.yml
+docker-compose.yaml
+.git/
+.gitignore
+.gitattributes
+.gitmodules
+.hg/
+.hgignore
+.hgsub
+.hgsubstate
+.svn/
+.bzr
+.bzrignore
+external/
+
+# Otros archivos y directorios que no se deben incluir en el despliegue a Google Cloud
+*.log
+*.log.*
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
