@@ -65,10 +65,5 @@ public class HolidayController {
     public ResponseEntity<Holiday> delete(@PathVariable String uuid){
         return ResponseEntity.ok().body(this.holidayService.deleteLogic(uuid));
     }
-
-    @GetMapping("/findByUuid/{uuid}")
-    public ResponseEntity<Holiday> findByUuid(@PathVariable String uuid){
-        return ResponseEntity.ok().body(this.holidayService.findByUuid(uuid));
-    }
 }
 
