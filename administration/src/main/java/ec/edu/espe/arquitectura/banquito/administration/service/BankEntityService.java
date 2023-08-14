@@ -67,7 +67,6 @@ public class BankEntityService {
 
     public Branch updateBranch(String code, BranchReq branchReq){
         Branch branch = getBranchByCode(code);
-
         this.branchMapper.updateBranch(branchReq, branch);
         return this.branchRepository.save(branch);
     }

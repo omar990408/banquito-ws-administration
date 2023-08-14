@@ -20,6 +20,7 @@ public class Holiday {
     private String geoLocationId;
     private String name;
     private String type;
+    private String state;
     @Version
     private Long version;
 }

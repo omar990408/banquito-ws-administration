@@ -32,6 +32,7 @@ public class HolidayService {
     public Holiday create(HolidayReq holidayReq){
         Holiday holiday = this.holidayMapper.toHoliday(holidayReq);
         holiday.setUuid(UUID.randomUUID().toString());
+        holiday.setState("ACT");
         return this.holidayRepository.save(holiday);
     }
     public Holiday update (String uuid, HolidayReq holidayReq) {
@@ -117,6 +118,7 @@ public class HolidayService {
                         .holidayDate(calendar.getTime())
                         .uuid(UUID.randomUUID().toString())
                         .type("NAT")
+                        .state("ACT")
                         .name("SATURDAY WEEKEND")
                         .countryCode(countryTmp.getCountryCode())
                         .build();
@@ -133,6 +135,7 @@ public class HolidayService {
                 Holiday holiday = Holiday.builder().
                         holidayDate(calendar.getTime())
                         .type("NAT")
+                        .state("ACT")
                         .uuid(UUID.randomUUID().toString())
                         .name("SUNDAY WEEKEND")
                         .countryCode(countryTmp.getCountryCode())
@@ -160,5 +163,14 @@ public class HolidayService {
         Optional<Holiday> holidayTmp = this.holidayRepository.findByCountryCodeAndHolidayDate(holiday.getCountryCode(), holiday.getHolidayDate());
         return holidayTmp.isEmpty();
 
+    }
+    public Holiday deleteLogic(String uuid){
+        Optional<Holiday> holidayTmp = this.holidayRepository.findByUuid(uuid);
+        if (holidayTmp.isEmpty()){
+            throw new RuntimeException("No existe la locación");
+        }
+        Holiday holiday = holidayTmp.get();
+        holiday.setState("INA");
+        return this.holidayRepository.save(holiday);
     }
 }
