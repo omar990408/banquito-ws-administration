@@ -173,4 +173,12 @@ public class HolidayService {
         holiday.setState("INA");
         return this.holidayRepository.save(holiday);
     }
+
+    public Holiday findByUuid(String uuid){
+        Optional<Holiday> holidayTmp = this.holidayRepository.findByUuid(uuid);
+        if (holidayTmp.isEmpty()){
+            throw new RuntimeException("No existe la locación");
+        }
+        return holidayTmp.get();
+    }
 }
