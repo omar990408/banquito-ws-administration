@@ -117,9 +117,9 @@ public class HolidayService {
                 Holiday holiday = Holiday.builder()
                         .holidayDate(calendar.getTime())
                         .uuid(UUID.randomUUID().toString())
-                        .type("NAT")
+                        .type("Nacional")
                         .state("ACT")
-                        .name("SATURDAY WEEKEND")
+                        .name("Sabado Fin de Semana")
                         .countryCode(countryTmp.getCountryCode())
                         .build();
                 if (this.findHolidayByHolidayUnique(holiday)) {
@@ -134,10 +134,10 @@ public class HolidayService {
                 calendar.set(Calendar.MILLISECOND, 0);
                 Holiday holiday = Holiday.builder().
                         holidayDate(calendar.getTime())
-                        .type("NAT")
+                        .type("Nacional")
                         .state("ACT")
                         .uuid(UUID.randomUUID().toString())
-                        .name("SUNDAY WEEKEND")
+                        .name("Domingo Fin de Semana")
                         .countryCode(countryTmp.getCountryCode())
                         .build();
                 if (this.findHolidayByHolidayUnique(holiday)) {
