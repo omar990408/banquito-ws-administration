@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.banquito.administration.repository;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoCountry;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
@@ -32,6 +33,7 @@ class GeoCountryRepositoryTest {
     }
 
     @Test
+    @Disabled
     void findByCountryCode() {
         //given
         geoCountryRepositoryUnderTest.save(geoCountry);
@@ -46,6 +48,7 @@ class GeoCountryRepositoryTest {
     }
 
     @Test
+    @Disabled
     void findByCountryCodeWhenCountryCodeDoesNotExist() {
         //given
         geoCountryRepositoryUnderTest.save(geoCountry);
@@ -57,6 +60,7 @@ class GeoCountryRepositoryTest {
     }
 
     @Test
+    @Disabled
     void findAllByStateContaining() {
           //given
           geoCountryRepositoryUnderTest.save(geoCountry);

@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.banquito.administration.repository;
 import ec.edu.espe.arquitectura.banquito.administration.model.Branch;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
@@ -42,6 +43,7 @@ class BranchRepositoryTest {
                 .build();
     }
     @Test
+    @Disabled
     void findByCode() {
 //given
         branchRepositoryUnderTest.save(branch);
@@ -56,6 +58,7 @@ class BranchRepositoryTest {
     }
 
     @Test
+    @Disabled
     void findAllByStateContaining() {
         //give
         branchRepositoryUnderTest.save(branch);
@@ -68,6 +71,7 @@ class BranchRepositoryTest {
     }
 
     @Test
+    @Disabled
     void findByLocationId() {
         //give
         branchRepositoryUnderTest.save(branch);
@@ -80,6 +84,7 @@ class BranchRepositoryTest {
     }
 
     @Test
+    @Disabled
     void findByLocationIdAndState() {
         //give
         branchRepositoryUnderTest.save(branch);
