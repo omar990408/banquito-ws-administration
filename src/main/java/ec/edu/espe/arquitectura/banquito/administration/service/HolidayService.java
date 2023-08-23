@@ -157,7 +157,7 @@ public class HolidayService {
         }
     }
 
-    public Boolean findHolidayByHolidayUnique(Holiday holiday) {
+    private Boolean findHolidayByHolidayUnique(Holiday holiday) {
 
         Optional<Holiday> holidayTmp = this.holidayRepository.findByCountryCodeAndHolidayDate(holiday.getCountryCode(), holiday.getHolidayDate());
         return holidayTmp.isEmpty();
@@ -166,7 +166,7 @@ public class HolidayService {
     public Holiday deleteLogic(String uuid){
         Optional<Holiday> holidayTmp = this.holidayRepository.findByUuid(uuid);
         if (holidayTmp.isEmpty()){
-            throw new RuntimeException("No existe la locación");
+            throw new RuntimeException("No existe el feriado");
         }
         Holiday holiday = holidayTmp.get();
         holiday.setState("INA");
@@ -175,7 +175,7 @@ public class HolidayService {
     public Holiday findByUuid(String uuid){
         Optional<Holiday> holidayTmp = this.holidayRepository.findByUuid(uuid);
         if (holidayTmp.isEmpty()){
-            throw new RuntimeException("No existe la locación");
+            throw new RuntimeException("No existe el feriado");
         }
         return holidayTmp.get();
     }
