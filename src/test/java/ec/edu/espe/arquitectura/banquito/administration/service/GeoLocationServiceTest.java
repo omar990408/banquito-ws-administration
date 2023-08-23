@@ -1,7 +1,6 @@
 package ec.edu.espe.arquitectura.banquito.administration.service;
 
 import ec.edu.espe.arquitectura.banquito.administration.dto.req.GeoLocationReq;
-import ec.edu.espe.arquitectura.banquito.administration.dto.res.GeoLocationRes;
 import ec.edu.espe.arquitectura.banquito.administration.model.GeoLocation;
 import ec.edu.espe.arquitectura.banquito.administration.repository.GeoLocationRepository;
 import ec.edu.espe.arquitectura.banquito.administration.service.mapper.GeoLocationMapper;
@@ -17,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;

@@ -38,7 +38,7 @@ public class HolidayService {
     public Holiday update (String uuid, HolidayReq holidayReq) {
         Optional<Holiday> holidayTmp = this.holidayRepository.findByUuid(uuid);
         if (holidayTmp.isEmpty()){
-            throw new RuntimeException("No existe la locación");
+            throw new RuntimeException("No existe el feriado");
         }else {
             Holiday holiday = holidayTmp.get();
             holidayMapper.updateHoliday(holidayReq, holiday);
@@ -58,7 +58,6 @@ public class HolidayService {
                     holiday.setGeoLocationName(getLocationName(holiday.getGeoLocationId()));
                 }
                 holiday.setCountryName(getCountryName(countryCode));
-
             }
             return holidays;
         }
@@ -91,7 +90,7 @@ public class HolidayService {
     private String getCountryName(String countryCode) {
         Optional<GeoCountry> countryTmp = this.geoCountryRepository.findByCountryCode(countryCode);
         if (countryTmp.isEmpty()){
-            throw new RuntimeException("No existe la locación");
+            throw new RuntimeException("No existe el codigo del pais");
         }
         return countryTmp.get().getName();
     }
