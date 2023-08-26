@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:4200","https://banquito-accounts-try-production.up.railway.app/doc/swagger-ui.html")
+                        .allowedOrigins("http://localhost:4200","https://banquito-accounts-try-production.up.railway.app/doc/swagger-ui.html","http://0.0.0.0")
                         .exposedHeaders("Content-Disposition")
                         .allowedMethods("*");
             }
