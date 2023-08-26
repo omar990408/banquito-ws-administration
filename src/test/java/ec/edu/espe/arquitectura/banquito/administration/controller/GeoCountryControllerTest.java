@@ -37,7 +37,7 @@ class GeoCountryControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-    private static final String URL = "/api/v1/geoCountry";
+        private static final String URL = "/api/v1/geoCountry";
 
     @Test
     void createGeoCountryTest() throws Exception {
