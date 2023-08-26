@@ -33,7 +33,7 @@ class BankEntityControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private BankEntityService underTest;
+    private BankEntityService bankEntityService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -47,7 +47,7 @@ class BankEntityControllerTest {
                 .internationalCode(internationalCode)
                 .name("Banco Test")
                 .build();
-        given(underTest.findBankEntityByInternationalCode(internationalCode))
+        given(bankEntityService.findBankEntityByInternationalCode(internationalCode))
                 .willReturn(bankEntityRes);
         //when
         ResultActions response = mockMvc.perform(get(URL+"/find/{internationalCode}", internationalCode));
@@ -72,7 +72,7 @@ class BankEntityControllerTest {
                 .latitude(BigDecimal.valueOf(12.12))
                 .longitude(BigDecimal.valueOf(-12.12))
                 .build();
-        given(underTest.createBranch(any(BranchReq.class)))
+        given(bankEntityService.createBranch(any(BranchReq.class)))
                 .willAnswer((invocation) -> invocation.getArgument(0));
         // when
         ResultActions response = mockMvc.perform(post(URL+"/addBranch")
@@ -113,7 +113,7 @@ class BankEntityControllerTest {
                 .creationDate(LocalDate.now())
                 .uniqueKey(UUID.randomUUID().toString())
                 .build();
-        given(underTest.createBranch(any(BranchReq.class)))
+        given(bankEntityService.createBranch(any(BranchReq.class)))
                 .willReturn(branch);
         // when
         ResultActions response = mockMvc.perform(post(URL+"/addBranch")
@@ -160,7 +160,7 @@ class BankEntityControllerTest {
                 .creationDate(LocalDate.now())
                 .uniqueKey(UUID.randomUUID().toString())
                 .build();
-        given(underTest.updateBranch(code, branchReq))
+        given(bankEntityService.updateBranch(code, branchReq))
                 .willReturn(branchUpdated);
         //when
         ResultActions response = mockMvc.perform(put(URL+"/updateBranch/{code}", code)
@@ -182,7 +182,7 @@ class BankEntityControllerTest {
         BranchReq branchReq = BranchReq.builder()
                 .name("Branch Test Updated")
                 .build();
-        given(underTest.updateBranch(code, branchReq))
+        given(bankEntityService.updateBranch(code, branchReq))
                 .willAnswer((invocation) -> invocation.getArgument(0));
         //when
         ResultActions response = mockMvc.perform(put(URL+"/updateBranch/{code}", code)
@@ -213,7 +213,7 @@ class BankEntityControllerTest {
                 .creationDate(LocalDate.now())
                 .uniqueKey(UUID.randomUUID().toString())
                 .build();
-        given(underTest.deleteBranch(code)).willReturn(branchDeleted);
+        given(bankEntityService.deleteBranch(code)).willReturn(branchDeleted);
         //when
         ResultActions response = mockMvc.perform(put(URL+"/deleteBranch/{code}", code));
         //then
@@ -226,7 +226,7 @@ class BankEntityControllerTest {
     void deleteBranchTestThrowException() throws Exception {
         //given
         String code = "CODE-TEST-"+ UUID.randomUUID();
-        given(underTest.deleteBranch(code)).willAnswer((invocation) -> invocation.getArgument(0));
+        given(bankEntityService.deleteBranch(code)).willAnswer((invocation) -> invocation.getArgument(0));
         //when
         ResultActions response = mockMvc.perform(put(URL+"/deleteBranch/{code}", code));
         //then
@@ -240,7 +240,7 @@ class BankEntityControllerTest {
         String code = "CODE-TEST-"+ UUID.randomUUID();
         BranchRes branch = generateBranchRes();
         branch.setCode(code);
-        given(underTest.findBranchByCode(branch.getCode()))
+        given(bankEntityService.findBranchByCode(branch.getCode()))
                 .willReturn(branch);
         //when
         ResultActions response = mockMvc.perform(get(URL+"/findBranch/{code}", code));
@@ -259,7 +259,7 @@ class BankEntityControllerTest {
         BranchRes branch2 = generateBranchRes();
         branch1.setCode("CODE-TEST-"+ UUID.randomUUID());
         List<BranchRes> branches = List.of(branch1, branch2);
-        given(underTest.findAllBranchesByState(state))
+        given(bankEntityService.findAllBranchesByState(state))
                 .willReturn(branches);
         //when
         ResultActions response = mockMvc.perform(get(URL+"/findAllBranches/{state}", state));
@@ -278,7 +278,7 @@ class BankEntityControllerTest {
         BranchRes branch2 = generateBranchRes();
         branch1.setCode("CODE-TEST-"+ UUID.randomUUID());
         List<BranchRes> branches = List.of(branch1, branch2);
-        given(underTest.findAllBranchesByLocationId(locationId))
+        given(bankEntityService.findAllBranchesByLocationId(locationId))
                 .willReturn(branches);
         //when
         ResultActions response = mockMvc.perform(get(URL+"/findBranches-location/{locationId}", locationId));
@@ -298,7 +298,7 @@ class BankEntityControllerTest {
         BranchRes branch2 = generateBranchRes();
         branch1.setCode("CODE-TEST-"+ UUID.randomUUID());
         List<BranchRes> branches = List.of(branch1, branch2);
-        given(underTest.findAllBranchesByLocationIdAndState(locationId, state))
+        given(bankEntityService.findAllBranchesByLocationIdAndState(locationId, state))
                 .willReturn(branches);
         //when
         ResultActions response = mockMvc.perform(get(URL+"/Branches-location-state/{locationId}/{state}", locationId, state));
