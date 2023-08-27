@@ -76,4 +76,11 @@ public class GeoLocationService {
         return this.geoLocationMapper.toGeoLocationResList(geoLocation);
     }
 
+    public void delete(String uuid){
+        Optional<GeoLocation> geoLocation = this.geoLocationRepository.findByUuid(uuid);
+        if (geoLocation.isEmpty()){
+            throw new RuntimeException("No se encontro resultados");
+        }
+        this.geoLocationRepository.delete(geoLocation.get());
+    }
 }

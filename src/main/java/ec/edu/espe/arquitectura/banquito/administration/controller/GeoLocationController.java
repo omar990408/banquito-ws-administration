@@ -63,5 +63,15 @@ public class GeoLocationController {
         return ResponseEntity.ok().body(geoLocationRes);
     }
 
+    @DeleteMapping("/delete/{uuid}")
+    public ResponseEntity<String> delete(@PathVariable String uuid){
+        try{
+            this.geoLocationService.delete(uuid);
+            return ResponseEntity.ok().body("Registro eliminado");
+        }catch (RuntimeException rte){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 
 }
