@@ -35,8 +35,8 @@ public class GeoLocationService {
         }
     }
 
-    public GeoLocation update (String id, GeoLocationReq geoLocationReq) {
-        Optional<GeoLocation> geoLocationTmp = this.geoLocationRepository.findById(id);
+    public GeoLocation update (String uuid, GeoLocationReq geoLocationReq) {
+        Optional<GeoLocation> geoLocationTmp = this.geoLocationRepository.findByUuid(uuid);
         if (geoLocationTmp.isEmpty()){
             throw new RuntimeException("No existe la locación");
         }else {
